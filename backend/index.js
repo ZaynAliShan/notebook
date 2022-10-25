@@ -12,16 +12,18 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => { // to hit this route we do : http://127.0.0.1:3000/
-  res.send('Hello Zain, Welcome!')
-})
+app.use(express.json())
+// Available Routes (getting routes from routes folder)
+app.use('/api/auth', require('./routes/auth'))
+app.use('/api/notes', require('./routes/notes'))
 
 app.listen(port, () => {
   console.log(`Your app listening on port ${port}`)
+  console.log(`Your app running on port http://localhost:${port}`)
 })
 
 
-
+// first we made models and now we use them in routes
 
 
 
